@@ -2,7 +2,7 @@
 name: deep-research
 description: Conducts exhaustive, methodical research through structured investigation cycles with academic rigor. Use when user needs comprehensive analysis, literature reviews, competitive intelligence, or deep dives into complex topics. Supports APA citations, multi-phase research with user checkpoints, systematic evidence gathering, and knowledge synthesis across themes. Minimum two full research cycles per theme required.
 metadata:
-  moltbot:
+  openclaw:
     emoji: 🔬
 ---
 

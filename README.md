@@ -1,6 +1,6 @@
 # Deep Research Skill 🔬
 
-A Moltbot skill for conducting exhaustive, methodical research through structured investigation cycles with academic rigor.
+A OpenClaw skill for conducting exhaustive, methodical research through structured investigation cycles with academic rigor.
 
 ## Overview
 
@@ -14,12 +14,12 @@ This skill enables systematic deep research with:
 
 ## Installation
 
-1. Copy this skill to your Moltbot skills directory:
+1. Copy this skill to your OpenClaw skills directory:
    ```bash
-   cp -r deep-research /path/to/moltbot/skills/
+   cp -r deep-research /path/to/openclaw/skills/
    ```
 
-2. The skill auto-registers on next Moltbot restart.
+2. The skill auto-registers on next OpenClaw restart.
 
 ## Usage
 
@@ -95,11 +95,11 @@ Apache License 2.0 - See [LICENSE](LICENSE)
 
 ## Contributing
 
-This is a Moltbot skill. To contribute:
+This is a OpenClaw skill. To contribute:
 1. Fork the repository
 2. Make changes
 3. Submit a pull request
 
 ## Credits
 
-Adapted from deep research protocols for Moltbot's tool ecosystem.
+Adapted from deep research protocols for OpenClaw's tool ecosystem.
