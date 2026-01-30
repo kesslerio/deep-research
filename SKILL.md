@@ -92,8 +92,8 @@ List 3-5 major themes for investigation. For each theme:
 - `web_search` with `count=20` for comprehensive coverage
 - Cast wide net to identify key sources, players, concepts
 
-**Step 2: Deep Analysis (Sequential Thinking)**
-Synthesize initial findings:
+**Step 2: Deep Analysis**
+Synthesize initial findings using your reasoning capabilities:
 - Extract key patterns and trends
 - Map knowledge structure
 - Form initial hypotheses
@@ -122,8 +122,8 @@ Document:
 - `web_fetch` on primary sources for deep extraction
 - Use `freshness` parameter for recent developments if needed
 
-**Step 2: Comprehensive Analysis (Sequential Thinking)**
-Test and refine understanding:
+**Step 2: Comprehensive Analysis**
+Test and refine understanding using your reasoning capabilities:
 - Test initial hypotheses against new evidence
 - Challenge assumptions from Cycle 1
 - Find contradictions between sources
@@ -176,13 +176,13 @@ Establish:
 
 **REQUIRED ORDER:**
 
-1. **START:** `web_search` for landscape
-2. **ANALYZE:** Sequential Thinking to process
-3. **DIVE:** `web_fetch` for depth on key sources
-4. **PROCESS:** Sequential Thinking to synthesize
-5. **REPEAT:** Until theme exhausted
+1. **START:** `web_search` for landscape (count=20)
+2. **ANALYZE:** Synthesize findings, identify patterns, note gaps
+3. **DIVE:** `web_fetch` on primary sources for depth
+4. **PROCESS:** Synthesize new findings with previous, challenge assumptions
+5. **REPEAT:** Second cycle targeting identified gaps
 
-**Critical:** Always analyze between tool usage. No shortcuts permitted.
+**Critical:** Always analyze between tool usage. Document your reasoning explicitly.
 
 ---
 
@@ -209,6 +209,35 @@ After completing all theme cycles:
 5. **Form unified understanding:**
    - Integrated narrative across all themes
    - Comprehensive view of the topic
+
+---
+
+## Error Handling Protocol
+
+When research encounters obstacles, follow this protocol:
+
+### Empty or Insufficient Search Results
+1. **Broaden query terms** — Remove specific constraints, use synonyms
+2. **Try related concepts** — Search adjacent terminology
+3. **Document the gap** — Note when authoritative sources are scarce
+4. **Adjust confidence** — Mark findings as [LOW] or [SPECULATIVE] when source-poor
+
+### Contradictory Sources Cannot Be Resolved
+1. **Present both claims** with full context
+2. **Analyze why they differ** — methodology, time period, population
+3. **Assess evidence quality** on each side
+4. **Document as unresolved** if contradiction persists
+
+### Source Quality Concerns
+- **No primary source available** — Rely on secondary sources but flag limitation
+- **Outdated information** — Note publication date, assess if still relevant
+- **Potential bias** — Identify conflicts of interest, funding sources
+- **Methodology unclear** — Flag as lower confidence when methods not described
+
+### Technical Failures
+- **web_fetch fails** — Document URL attempted, note as inaccessible source
+- **Rate limiting** — Slow down, reduce search count, retry with backoff
+- **Memory search unavailable** — Proceed without cross-reference, note limitation
 
 ---
 
@@ -251,18 +280,29 @@ After completing all theme cycles:
 - **Progressive logical development** — each paragraph builds on previous
 - **Natural flow between concepts** — smooth transitions
 
-### Prohibited in Final Report
+### Structured Data Usage Rules
+
+| Phase | Tables Allowed | Lists Allowed | Format |
+|-------|---------------|---------------|--------|
+| **Phase 1 (Engagement)** | No | No (in response) | Conversational prose |
+| **Phase 2 (Planning)** | Yes | Yes | Structured presentation for clarity |
+| **Phase 3 (Execution)** | Internal notes only | Internal notes only | Your analysis can use structure |
+| **Phase 4 (Final Report)** | No | No | Strict narrative prose only |
+
+**Phase 2 Exception:** Research Planning uses tables and lists intentionally — this is the one phase where structured presentation aids clarity. The user reviews and approves this plan before execution.
+
+### Prohibited in Final Report (Phase 4)
 - Bullet points or numbered lists
-- Isolated data points without context
-- Section headers without narrative
-- Tables (convert to prose description)
+- Data tables (convert to prose description: "The three primary vendors—GitHub Copilot with 1.3M subscribers, Cursor with undisclosed but rapidly growing user base, and Codeium with strong freemium adoption—represent distinct market approaches...")
+- Isolated data points without narrative context
+- Section headers followed by lists instead of paragraphs
 
 ### Required in Final Report
 - Proper paragraphs with topic sentences
-- Integrated evidence within prose
+- Integrated evidence within flowing prose
 - Clear transitions between ideas
 - Academic but accessible language
-- Data woven into narrative text
+- Data woven into narrative sentences
 
 ### Paragraph Structure
 - **Topic sentence:** Core claim
@@ -344,15 +384,62 @@ Smith, R. (2020). Protein requirements for muscle preservation during
 
 ## Parallel Research Strategy
 
-For independent themes, use `sessions_spawn` to research in parallel:
+For independent themes, use `sessions_spawn` to research in parallel. This is appropriate when themes don't depend on each other's findings.
+
+### When to Use Parallel Research
+- Themes investigate distinct aspects (e.g., "market landscape" vs "technical capabilities")
+- No cross-theme dependencies in early phases
+- Time constraints require faster turnaround
+- Sufficient token budget for multiple sub-agents
+
+### Parallel Research Workflow
+
+**Step 1: Spawn Sub-Agents for Each Theme**
 
 ```
-Theme A → sessions_spawn(agentId="kimi", task="Research theme A...")
-Theme B → sessions_spawn(agentId="kimi", task="Research theme B...")
-Theme C → sessions_spawn(agentId="kimi", task="Research theme C...")
+Theme A (Market Landscape):
+→ sessions_spawn(
+    task="Research AI coding assistant market landscape. Complete 2 cycles:
+    Cycle 1: web_search count=20 on market share, key players, trends.
+    Analyze findings, identify gaps.
+    Cycle 2: web_fetch on top 5 sources, deep dive on contradictions.
+    Return: Key findings, confidence levels, gaps remaining, source list."
+  )
+
+Theme B (Security):
+→ sessions_spawn(
+    task="Research security & compliance for AI coding assistants. Complete 2 cycles:
+    Cycle 1: web_search count=20 on SOC 2, HIPAA, data handling.
+    Analyze findings, identify gaps.
+    Cycle 2: web_fetch on security whitepapers, compliance docs.
+    Return: Key findings, confidence levels, gaps remaining, source list."
+  )
 ```
 
-Then synthesize results from all sub-agents.
+**Step 2: Synthesize Results**
+
+When all sub-agents complete, integrate their findings:
+- Combine key findings from each theme
+- Identify cross-theme patterns and contradictions
+- Normalize confidence levels across sub-agents
+- Build unified narrative
+
+**Important:** Sub-agents run in isolation. They cannot see each other's work. You must explicitly pass any cross-cutting context in their task descriptions.
+
+### Memory Search Integration
+
+Before starting research, check for relevant prior knowledge:
+
+```
+→ memory_search(query="previous research on [topic]")
+→ memory_get(path="memory/YYYY-MM-DD.md") [if relevant date found]
+```
+
+Use prior findings to:
+- Avoid duplicate research
+- Build on previous conclusions
+- Identify how understanding has evolved
+- Note persistent gaps from prior research
 
 ---
 

@@ -19,10 +19,10 @@
 
 ## Tool Usage Sequence (Per Theme)
 1. **START:** `web_search` for landscape (count=20)
-2. **ANALYZE:** Sequential thinking — process, identify gaps
+2. **ANALYZE:** Synthesize findings, identify patterns and gaps
 3. **DIVE:** `web_fetch` for depth on key sources
-4. **PROCESS:** Sequential thinking — synthesize, connect
-5. **REPEAT:** Until theme exhausted (minimum 2 cycles)
+4. **PROCESS:** Synthesize new findings, challenge assumptions
+5. **REPEAT:** Second cycle targeting identified gaps
 
 ## Required Analysis After Every Tool Use
 - Connect new findings to previous results

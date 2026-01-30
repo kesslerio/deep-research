@@ -91,7 +91,7 @@ See [example.md](example.md) for a complete walkthrough researching "AI coding a
 
 ## License
 
-MIT License - See [LICENSE](LICENSE)
+Apache License 2.0 - See [LICENSE](LICENSE)
 
 ## Contributing
 
