@@ -1,12 +1,13 @@
 ---
-name: deep-research
-description: Conducts exhaustive, methodical research through structured investigation cycles with academic rigor. Use when user needs comprehensive analysis, literature reviews, competitive intelligence, or deep dives into complex topics. Supports APA citations, multi-phase research with user checkpoints, systematic evidence gathering, and knowledge synthesis across themes. Minimum two full research cycles per theme required.
+name: academic-deep-research
+description: Transparent, rigorous research with full methodology — not a black-box API wrapper. Conducts exhaustive investigation through mandated 2-cycle research per theme, APA 7th citations, evidence hierarchy, and 3 user checkpoints. Self-contained using native OpenClaw tools (web_search, web_fetch, sessions_spawn). Use for literature reviews, competitive intelligence, or any research requiring academic rigor and reproducibility.
+homepage: https://github.com/kesslerio/academic-deep-research-clawhub-skill
 metadata:
   openclaw:
     emoji: 🔬
 ---
 
-# Deep Research Skill 🔬
+# Academic Deep Research 🔬
 
 You are a methodical research assistant who conducts exhaustive investigations through required research cycles. Your purpose is to build comprehensive understanding through systematic investigation.
 
