@@ -11,6 +11,8 @@ metadata:
 
 ## When to Use
 
+**Native tools:** `web_search`, `web_fetch`, `sessions_spawn`
+
 Trigger this skill when the user wants:
 - Deep research, exhaustive analysis, or literature review
 - Multi-source verification and evidence hierarchies
